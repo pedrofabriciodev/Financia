@@ -20,7 +20,7 @@ const Bill = () => {
    const insets = useSafeAreaInsets();
 
     return(
-        <SafeAreaView style={[styles.safeArea, {paddingTop: insets.top}]}>
+         <SafeAreaView style={styles.safeArea } edges={['top']}>
                 <View style={styles.container}>
                     
                     <View style={styles.header}>

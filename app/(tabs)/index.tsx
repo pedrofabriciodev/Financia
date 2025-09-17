@@ -23,7 +23,7 @@ const Dashboard = () => {
     const router = useRouter();
 
     return (
-        <SafeAreaView style={[styles.safeArea, {paddingTop: insets.top},]}>
+        <SafeAreaView style={styles.safeArea } edges={['top']}>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Bem Vindo</Text>
@@ -72,22 +72,6 @@ const Dashboard = () => {
                     <MaterialIcons name="add" size={32} color={'white'}/>
                 </TouchableOpacity>
 
-
-                {/* <View style={styles.footer}>
-                  <TouchableOpacity style={{alignItems: 'center'}}>
-                      <MaterialIcons name="home" size={32}/> 
-                      <Text>Inicio</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={{alignItems: 'center'}}>
-                          <MaterialIcons name="receipt" size={24} /> 
-                          <Text>Contas</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity style={{alignItems: 'center'}}>
-                      <MaterialIcons name="insert-chart-outlined" size={24} /> 
-                      <Text>Extrato</Text>
-                  </TouchableOpacity>  
-                </View> */}
             </View>
         </SafeAreaView>
     );
@@ -96,10 +80,7 @@ const Dashboard = () => {
 
 const styles = StyleSheet.create({
     safeArea:{
-      flex:1,
-  // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  // backgroundColor: '#fff',
-
+      flex:1
     },
     container: {
         flex: 1,
@@ -180,21 +161,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#121217'
     },
-
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#FFFFFF',
-        padding: 16,
-        alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#F0F2F5',
-        height: 73
-  },
 });
 
 export default Dashboard;
