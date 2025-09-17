@@ -1,4 +1,11 @@
-import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+    View, 
+    Text, 
+    TouchableOpacity, 
+    StyleSheet 
+} from "react-native";
+
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 

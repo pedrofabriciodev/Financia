@@ -1,5 +1,4 @@
-import { 
-  SafeAreaView,
+import {
   View, 
   Text, 
   TouchableOpacity, 
@@ -7,6 +6,9 @@ import {
   Platform,
   StatusBar 
 } from "react-native";
+
+
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";

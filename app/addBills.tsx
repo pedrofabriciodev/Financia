@@ -1,4 +1,14 @@
-import { SafeAreaView, TouchableOpacity, View, Text, TextInput, Switch, StyleSheet} from "react-native";
+import {
+    TouchableOpacity, 
+    View, 
+    Text, 
+    TextInput, 
+    Switch, 
+    StyleSheet
+} from "react-native";
+
+
+import { SafeAreaView } from "react-native-safe-area-context";
 // import styles from "./addBillStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
