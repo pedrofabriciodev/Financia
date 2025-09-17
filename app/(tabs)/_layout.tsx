@@ -15,7 +15,6 @@ export default function TabLayout() {
     
     tabBarStyle: {
       borderTopWidth: 1,
-      borderBottomWidth: 1    ,
       elevation: 0,
       borderColor:   '#F0F2F5',  
       backgroundColor: '#FFFFFF',
@@ -33,7 +32,7 @@ export default function TabLayout() {
   }}
 >
   <Tabs.Screen
-    name="index"
+    name="home"
     options={{
       title: 'Inicio',
       tabBarIcon: ({ color }) => <MaterialIcons size={32} name="home" color={color} />,
@@ -48,7 +47,7 @@ export default function TabLayout() {
     }}
   />
   {/* <Tabs.Screen
-    name="extract"
+    name="start"
     options={{
       title: 'Extrato',
       tabBarIcon: ({ color }) => <MaterialIcons size={24} name="insert-chart-outlined" color={color} />,

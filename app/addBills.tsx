@@ -12,6 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // import styles from "./addBillStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
+import { router } from "expo-router";
 
 const AddBill = () =>{
     
@@ -50,7 +51,7 @@ const AddBill = () =>{
 
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Adicionar Conta</Text>
-                    <TouchableOpacity style={styles.headerIcon}><MaterialIcons name="close" size={28}/></TouchableOpacity>
+                    <TouchableOpacity style={styles.headerIcon}><MaterialIcons name="close" size={28} onPress={()=>router.replace('/(tabs)/home')}/></TouchableOpacity>
                 </View>
 
                 <View style={styles.inputContainer}> 
@@ -99,12 +100,6 @@ const AddBill = () =>{
                     <Text style={{color: 'white', fontSize: 16}}>Salvar</Text>
                 </TouchableOpacity>
 
-                <View style={styles.footer}>
-                    <TouchableOpacity><MaterialIcons name="home" size={24}/></TouchableOpacity>
-                    <TouchableOpacity><MaterialIcons name="description" size={24}/></TouchableOpacity>
-                    <TouchableOpacity><MaterialIcons name="tv" size={24}/></TouchableOpacity>
-                </View>
-
             </View>
         </SafeAreaView>
     );
@@ -114,9 +109,6 @@ const AddBill = () =>{
 const styles = StyleSheet.create({
     safeArea:{
         flex:1,
-        paddingTop:49,
-        paddingBottom:49
-
     },
 
     container: {
