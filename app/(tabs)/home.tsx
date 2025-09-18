@@ -25,6 +25,7 @@ const Dashboard = () => {
 
     return (
         <SafeAreaView style={styles.safeArea } edges={['top']}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Bem Vindo</Text>

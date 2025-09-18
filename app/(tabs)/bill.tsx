@@ -2,7 +2,8 @@ import {
     View, 
     Text, 
     TouchableOpacity, 
-    StyleSheet 
+    StyleSheet, 
+    StatusBar
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -23,6 +24,7 @@ const Bill = () => {
 
     return(
          <SafeAreaView style={styles.safeArea } edges={['top']}>
+            <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
                 <View style={styles.container}>
                     
                     <View style={styles.header}>

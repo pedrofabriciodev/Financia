@@ -4,7 +4,8 @@ import {
     Text, 
     TextInput, 
     Switch, 
-    StyleSheet
+    StyleSheet,
+    StatusBar
 } from "react-native";
 
 
@@ -48,6 +49,7 @@ const AddBill = () =>{
 
     return(
     <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
             <View style={styles.container}>
 
                 <View style={styles.header}>
