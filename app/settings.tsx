@@ -30,7 +30,7 @@ const Settings = () => {
                     
                     <View style={styles.header}>
                         <TouchableOpacity style={styles.headerIcon}>
-                            <MaterialIcons name="arrow-back" size={28} onPress={ () => router.push('/(tabs)/home')}/>
+                            <MaterialIcons name="arrow-back" size={28} onPress={ () => router.back()}/>
                         </TouchableOpacity>
 
                         <Text style={styles.headerText}>

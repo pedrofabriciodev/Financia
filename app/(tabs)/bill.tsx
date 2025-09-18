@@ -28,7 +28,7 @@ const Bill = () => {
                 <View style={styles.container}>
                     
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headerIcon} onPress={()=> router.push('/(tabs)/home')}>
+                        <TouchableOpacity style={styles.headerIcon} onPress={()=> router.back()}>
                             <MaterialIcons name="arrow-back" size={28}/>
                         </TouchableOpacity>
 

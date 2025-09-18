@@ -54,7 +54,7 @@ const AddBill = () =>{
 
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Adicionar Conta</Text>
-                    <TouchableOpacity style={styles.headerIcon}><MaterialIcons name="close" size={28} onPress={()=>router.replace('/(tabs)/home')}/></TouchableOpacity>
+                    <TouchableOpacity style={styles.headerIcon}><MaterialIcons name="close" size={28} onPress={()=>router.back()}/></TouchableOpacity>
                 </View>
 
                 <View style={styles.inputContainer}> 
