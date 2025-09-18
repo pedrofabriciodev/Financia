@@ -17,7 +17,8 @@ const Start = () => {
 
 return (
   <SafeAreaView style={styles.safeArea} edges={['top']}>
-    <StatusBar barStyle={'light-content'} backgroundColor={'black'} /> 
+    <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
+    
     <View style={styles.container}>
       <Image
         source={require('../assets/images/firstScreen.png')}
