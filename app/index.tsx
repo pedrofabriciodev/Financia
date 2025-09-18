@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { View, StyleSheet, Image, Dimensions, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Image, Dimensions, Text, TouchableOpacity, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Colors from "@/constants/Colors";
@@ -17,6 +17,7 @@ const Start = () => {
 
 return (
   <SafeAreaView style={styles.safeArea} edges={['top']}>
+    <StatusBar barStyle={'light-content'} backgroundColor={'black'} /> 
     <View style={styles.container}>
       <Image
         source={require('../assets/images/firstScreen.png')}
