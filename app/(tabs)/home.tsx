@@ -16,6 +16,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons/";
 
 import { useRouter } from "expo-router";
+import Colors from "@/constants/Colors";
 
 
 const Dashboard = () => {
@@ -69,7 +70,7 @@ const Dashboard = () => {
 
 
                 <TouchableOpacity style={styles.addButton} onPress={() => router.push('/addBills')} >
-                    <MaterialIcons name="add" size={32} color={'white'}/>
+                    <MaterialIcons name="add" size={32} color={Colors.white}/>
                 </TouchableOpacity>
 
             </View>
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
     },
     header: {
         flexDirection: 'row',
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#333',
+        color: Colors.black,
         marginRight: 0
     },
     section: {
@@ -106,10 +107,10 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '600',
         marginBottom: 12,
-        color: '#2c3e50'
+        color: Colors.black
     },
     card: {
-        backgroundColor: '#F0F2F5',
+        backgroundColor: Colors.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 8,
@@ -121,17 +122,17 @@ const styles = StyleSheet.create({
     },
     cardLabel: {
         fontSize: 14,
-        color: '#121217',
+        color: Colors.black,
         marginBottom: 4
     },
     cardValue: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#121217'
+        color: Colors.black
     },
     addButton: { 
         borderRadius: 35, 
-        backgroundColor: 'blue',
+        backgroundColor: Colors.blue,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
@@ -142,13 +143,13 @@ const styles = StyleSheet.create({
     },
     addButtonText: {
         fontSize: 40,
-        color: 'white',
+        color: Colors.white,
         fontWeight: 'bold'
     },
 
 
     miniCard: {
-        backgroundColor: '#F0F2F5',
+        backgroundColor: Colors.lightGrey,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 8,
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     },
     miniCardText: {
         fontSize: 14,
-        color: '#121217'
+        color: Colors.black
     },
 });
 

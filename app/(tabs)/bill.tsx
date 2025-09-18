@@ -15,6 +15,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MaterialIcons, Octicons } from "@expo/vector-icons";
 
 import BillsComponents from "@/components/BillsComponents";
+import Colors from "@/constants/Colors";
 
 const Bill = () => {
    const insets = useSafeAreaInsets();
@@ -34,7 +35,7 @@ const Bill = () => {
                     </View>
 
                     <View>
-                        <Text style={{fontSize: 18, fontWeight: '600', marginBottom: 12, color: '#2c3e50' }}>
+                        <Text style={{fontSize: 18, fontWeight: '600', marginBottom: 12, color: Colors.black }}>
                             A Vencer
                         </Text>
                     </View>
@@ -57,20 +58,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
     },
 
-    input: {
-       
-        borderRadius: 8,
-        width: 358,
-        height: 56,
-        color: 'black',
-        backgroundColor: '#F0F2F5',
-        marginBottom: 20
-
-      },
-      
     header: {
         justifyContent: 'center',
         flexDirection: 'row',
@@ -80,41 +70,9 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#333',
+        color: Colors.black,
         marginRight: 0
     },
-    addButton: { 
-        borderRadius: 8, 
-        backgroundColor: 'blue',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        bottom: 80,
-        width: 358,
-        height: 48,
-        alignSelf: 'center'
-    },
-
-    addButtonText: {
-        fontSize: 40,
-        color: 'white',
-        fontWeight: 'bold'
-    },
-
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#FFFFFF',
-        padding: 16,
-        alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#F0F2F5',
-        height: 73,
-  },
 });
 
 export default Bill;

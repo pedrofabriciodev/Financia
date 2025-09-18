@@ -3,21 +3,22 @@ import React from 'react';
 
 
 import { MaterialIcons } from "@expo/vector-icons/";
+import Colors from '@/constants/Colors';
 
 export default function TabLayout() {
 
   return (
     <Tabs
   screenOptions={{
-    tabBarActiveTintColor: '#121217', // Cor do texto/ícone ativo
-    tabBarInactiveTintColor: '#637087', // Cor do texto/ícone inativo
+    tabBarActiveTintColor: Colors.black, // Cor do texto/ícone ativo
+    tabBarInactiveTintColor: Colors.grey, // Cor do texto/ícone inativo
     headerShown: false,
     
     tabBarStyle: {
       borderTopWidth: 1,
       elevation: 0,
-      borderColor:   '#F0F2F5',  
-      backgroundColor: '#FFFFFF',
+      borderColor:   Colors.lightGrey,  
+      backgroundColor: Colors.white,
       height: 110,
       justifyContent: 'space-evenly'
     },

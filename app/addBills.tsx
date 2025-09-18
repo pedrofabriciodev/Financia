@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { router } from "expo-router";
+import Colors from "@/constants/Colors";
 
 const AddBill = () =>{
     
@@ -88,16 +89,16 @@ const AddBill = () =>{
                 }}>
                     <Text>Pago</Text>
                     <Switch
-                        trackColor={{ false: '#F0F2F5', true: '#333' }}
-                        thumbColor={isEnabled ? '#FFFFFF' : '#FFFFFF'}
+                        trackColor={{ false: Colors.lightGrey, true: Colors.black }}
+                        thumbColor={isEnabled ? Colors.white : Colors.white}
                         onValueChange={toggleSwitch}
                         value={isEnabled}
                         style={{ transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],  }}
                     />
                 </View>
 
-                <TouchableOpacity style={styles.addButton} >
-                    <Text style={{color: 'white', fontSize: 16}}>Salvar</Text>
+                <TouchableOpacity style={styles.saveButton} >
+                    <Text style={styles.saveButtonText}>Salvar</Text>
                 </TouchableOpacity>
 
             </View>
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        backgroundColor: '#ffffff',
+        backgroundColor: Colors.white,
     },
 
     header: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#333',
+        color: Colors.black,
         marginRight: 0
     },
     headerIcon:{
@@ -144,14 +145,14 @@ const styles = StyleSheet.create({
         width: 358,
         height: 56,
         color: 'black',
-        backgroundColor: '#F0F2F5',
+        backgroundColor: Colors.lightGrey,
         marginBottom: 20
 
     },
       
-    addButton: { 
+    saveButton: { 
         borderRadius: 8, 
-        backgroundColor: 'blue',
+        backgroundColor: Colors.blue,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
@@ -161,26 +162,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
-    addButtonText: {
-        fontSize: 40,
-        color: 'white',
-        fontWeight: 'bold'
+    saveButtonText: {
+        color: Colors.white, 
+        fontSize: 16
     },
-
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: '#FFFFFF',
-        padding: 16,
-        alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#F0F2F5',
-        height: 73,
-  },
 });
 
 export default AddBill;
