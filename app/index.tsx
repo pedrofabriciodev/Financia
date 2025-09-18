@@ -12,8 +12,8 @@ const Start = () => {
 
     const screenWidth = Dimensions.get('window').width;
     const screenHeight = Dimensions.get('window').height; 
-    console.log(screenWidth)
-    console.log(screenHeight)
+    // console.log(screenWidth)
+    // console.log(screenHeight)
 
 return (
   <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -37,7 +37,7 @@ return (
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.startButton} onPress={() => router.replace('/(tabs)/home')}>
+      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/(auth)/(singin)/login')}>
         <Text style={{color: Colors.white}}>Comece</Text>
       </TouchableOpacity>
     
