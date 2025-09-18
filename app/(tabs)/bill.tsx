@@ -16,6 +16,7 @@ import { MaterialIcons, Octicons } from "@expo/vector-icons";
 
 import BillsComponents from "@/components/BillsComponents";
 import Colors from "@/constants/Colors";
+import { router } from "expo-router";
 
 const Bill = () => {
    const insets = useSafeAreaInsets();
@@ -25,7 +26,7 @@ const Bill = () => {
                 <View style={styles.container}>
                     
                     <View style={styles.header}>
-                        <TouchableOpacity style={styles.headerIcon}>
+                        <TouchableOpacity style={styles.headerIcon} onPress={()=> router.push('/(tabs)/home')}>
                             <MaterialIcons name="arrow-back" size={28}/>
                         </TouchableOpacity>
 
