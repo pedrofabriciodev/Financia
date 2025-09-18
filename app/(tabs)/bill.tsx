@@ -25,7 +25,7 @@ const Bill = () => {
                 <View style={styles.container}>
                     
                     <View style={styles.header}>
-                        <TouchableOpacity style={{position:'absolute', left:10}}>
+                        <TouchableOpacity style={styles.headerIcon}>
                             <MaterialIcons name="arrow-back" size={28}/>
                         </TouchableOpacity>
 
@@ -35,7 +35,7 @@ const Bill = () => {
                     </View>
 
                     <View>
-                        <Text style={{fontSize: 18, fontWeight: '600', marginBottom: 12, color: Colors.black }}>
+                        <Text style={styles.sectionTittle}>
                             A Vencer
                         </Text>
                     </View>
@@ -52,8 +52,6 @@ const Bill = () => {
 const styles = StyleSheet.create({
     safeArea:{
         flex:1,
-        
-
     },
     container: {
         flex: 1,
@@ -67,12 +65,21 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         alignItems: 'center',
     },
+    headerIcon:{
+        position:'absolute', 
+        left:10
+    },
     headerText: {
         fontSize: 18,
         fontWeight: 'bold',
         color: Colors.black,
         marginRight: 0
     },
+    sectionTittle:{
+        fontSize: 18, 
+        fontWeight: 'bold', 
+        marginBottom: 12, 
+        color: Colors.black },
 });
 
 export default Bill;

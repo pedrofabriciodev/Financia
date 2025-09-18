@@ -80,13 +80,7 @@ const AddBill = () =>{
                 </View>
 
                 <View       
-                    style={{  
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        width: '100%', 
-                        paddingHorizontal: 20, 
-                }}>
+                    style={styles.switchContainer}>
                     <Text>Pago</Text>
                     <Switch
                         trackColor={{ false: Colors.lightGrey, true: Colors.black }}
@@ -148,6 +142,14 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightGrey,
         marginBottom: 20
 
+    },
+
+    switchContainer:{  
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%', 
+        paddingHorizontal: 20, 
     },
       
     saveButton: { 

@@ -27,7 +27,7 @@ return (
         resizeMode="cover"
       />
 
-      <View style={{marginBottom:8, marginTop:16}}>
+      <View style={styles.containerMain}>
         <Text style={styles.textMain}>Bem-vindo à sua jornada financeira</Text>
       </View>
 
@@ -57,6 +57,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.white,
+    },
+    containerMain:{
+        marginBottom:8, 
+        marginTop:16
     },
     textMain: {
         fontSize: 28,

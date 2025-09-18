@@ -34,7 +34,7 @@ const Dashboard = () => {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Resumo Mensal</Text>
 
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly'}}> 
+                    <View style={styles.cardComponent}> 
 
                         <View style={styles.card}>
                             <Text style={styles.cardLabel}>Total Recebido</Text>
@@ -51,7 +51,7 @@ const Dashboard = () => {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Contas A Pagar</Text>
 
-                    <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                    <View style={styles.cardComponent}>
 
                         <TouchableOpacity style={styles.miniCard}>
                             <Text style={styles.miniCardText}>Esta Semana</Text>
@@ -109,6 +109,10 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         color: Colors.black
     },
+    cardComponent:{ 
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly'
+    },
     card: {
         backgroundColor: Colors.lightGrey,
         justifyContent: 'center',
@@ -141,12 +145,6 @@ const styles = StyleSheet.create({
         height: 70,
         right: 20,// ou ajuste conforme altura do tabBar
     },
-    addButtonText: {
-        fontSize: 40,
-        color: Colors.white,
-        fontWeight: 'bold'
-    },
-
 
     miniCard: {
         backgroundColor: Colors.lightGrey,
