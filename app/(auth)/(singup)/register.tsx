@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   View, 
   Text, 
@@ -5,7 +7,8 @@ import {
   StyleSheet,
   TextInput,
   Dimensions,
-  StatusBar
+  StatusBar,
+  Alert
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -17,11 +20,59 @@ import { useRouter } from "expo-router";
 
 import Colors from "@/constants/Colors";
 import { scaleWidth, scaleHeight, scaleFont } from "@/constants/metrics";
+import { supabase } from "@/lib/supabase";
 
 const Register = () => {
-      const width = Dimensions.get('window').width;
-    const height = Dimensions.get('window').height;
     const router = useRouter();
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    
+    const [loading, setLoading] = useState(false);
+
+
+    async function handleSingUp(){
+      setLoading(true);
+
+     if (!name || !email || !password || !confirmPassword) {
+        Alert.alert('Error', "Preencha todos os campos!!")
+        setLoading(false)
+        return;
+      }
+
+      if(password != confirmPassword ){
+        Alert.alert('Error', "As senhas são diferentes!")
+        setLoading(false)
+        return;
+      }
+
+      if(password.length<6){
+        Alert.alert('Error', "A senha precisa ter no minimo 6 digitos!")
+        setLoading(false)
+        return;
+      }
+
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { 
+            name: name
+          } 
+        },
+      })  
+
+      if(error){
+        Alert.alert('Error', error.message)
+        setLoading(false)
+        return;
+
+      }
+
+      router.replace('/(tabs)/home')
+    } 
 
     return (
         <SafeAreaView style={styles.safeArea } edges={['top']}>
@@ -43,6 +94,8 @@ const Register = () => {
                     style={styles.input}
                     placeholder="Nome Completo"
                     keyboardType="default"
+                    value={name}
+                    onChangeText={setName}
                     />
 
                     <Text style={styles.labelText}>Email</Text>
@@ -50,6 +103,8 @@ const Register = () => {
                     style={styles.input}
                     placeholder="Email"
                     keyboardType="default"
+                    value={email}
+                    onChangeText={setEmail}
                     />
 
                     <Text style={styles.labelText}>Senha</Text>
@@ -57,6 +112,8 @@ const Register = () => {
                     style={styles.input}
                     placeholder="Senha"
                     keyboardType="default"
+                    value={password}
+                    onChangeText={setPassword}
                     />
 
                     <Text style={styles.labelText}>Confirmar Senha</Text>
@@ -64,15 +121,17 @@ const Register = () => {
                     style={styles.input}
                     placeholder="Confirmar Senha"
                     keyboardType="default"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
                     />
 
                     
                 </View>
 
                 <View style={{gap:20}}>
-                    <TouchableOpacity style={styles.loginButton} onPress={() => router.replace('/(tabs)/home')} >
+                    <TouchableOpacity style={styles.loginButton} onPress={handleSingUp} >
                         <Text style={{color: Colors.white, fontWeight:'bold', fontSize:scaleFont(16)}}>
-                            Criar Conta
+                             {loading ? "Carregando.. " : "Criar Conta"}
                         </Text>
                     </TouchableOpacity>
 
