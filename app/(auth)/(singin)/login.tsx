@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TextInput,
   Dimensions,
-  StatusBar
+  StatusBar,
+  Alert
 } from "react-native";
 
 
@@ -22,14 +23,41 @@ import { useRouter } from "expo-router";
 
 import Colors from "@/constants/Colors";
 import { scaleWidth, scaleHeight, scaleFont } from "@/constants/metrics";
+import { supabase } from "@/lib/supabase";
 
 
 
 const Login = () => {
     const router = useRouter();
-
+    const [userOrName, setUserOrName] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+
+async function handlesignInWithPassword(){
+    setLoading(true);
+
+    if(password.length<6){
+        Alert.alert('Error', "A senha precisa ter no minimo 6 digitos!")
+        setLoading(false)
+        return;
+    }
+    const {data, error} = await supabase.auth.signInWithPassword({
+        email: userOrName,
+        password: password
+    })
+    if(error){
+        Alert.alert('Error', error.message)
+        setLoading(false)
+        return;
+    }
+
+        router.replace('/(tabs)/home')
+} 
+
+
+
 
     return (
         <SafeAreaView style={styles.safeArea } edges={['top']}>
@@ -45,6 +73,8 @@ const Login = () => {
                     style={styles.input}
                     placeholder="Usuário ou Email"
                     keyboardType="default"
+                    value={userOrName}
+                    onChangeText={setUserOrName}
                     />
                     <View style={styles.passwordContainer}>
                         <TextInput
@@ -71,9 +101,9 @@ const Login = () => {
                         Esqueceu a senha?
                     </Text>
 
-                    <TouchableOpacity style={styles.loginButton} onPress={() => router.replace('/(tabs)/home')} >
+                    <TouchableOpacity style={styles.loginButton} onPress={handlesignInWithPassword} >
                         <Text style={{color: Colors.white}}>
-                            Entrar
+                             {loading ? "Carregando.. " : "Entrar"}
                         </Text>
                     </TouchableOpacity>
 
