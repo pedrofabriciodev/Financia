@@ -1,0 +1,3 @@
+export const EXPO_PUBLIC_SUPABASE_URL= 'https://gbdisxernayuunxgaguc.supabase.co';
+export const EXPO_PUBLIC_SUPABASE_KEY= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdiZGlzeGVybmF5dXVueGdhZ3VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyMjgzMDgsImV4cCI6MjA3MzgwNDMwOH0.FYoXTCjzv3ByzVgMnT-FTHkEP9wEOs6w4QNyGFa15zk';
+        
