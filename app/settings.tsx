@@ -19,9 +19,27 @@ import { MaterialIcons, Octicons } from "@expo/vector-icons";
 import BillsComponents from "@/components/BillsComponents";
 import { router } from "expo-router";
 import Colors from "@/constants/Colors";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const Settings = () => {
-   const insets = useSafeAreaInsets();
+
+    const [name, setName] = useState <string | null>(null);
+    const [email, setEmail] = useState <string | undefined> (undefined);
+
+   useEffect(() => {
+    const fetchUser = async () => {
+        const { data: { user }, error } = await supabase.auth.getUser();
+        
+            if (user) {
+            setName(user.user_metadata.name);
+            setEmail(user.email);
+            }
+    }
+
+    fetchUser();
+}, []);
+
 
     return(
          <SafeAreaView style={styles.safeArea } edges={['top']}>
@@ -41,9 +59,9 @@ const Settings = () => {
                     <View style={styles.profileInfos}>
                         <Image source={require('../assets/images/profileExample.png')}/>
 
-                        <Text style={styles.userName}>Sophia Carter</Text>
+                        <Text style={styles.userName}>{name}</Text>
 
-                        <Text style={styles.userEmail}>sophia.carter@email.com</Text>
+                        <Text style={styles.userEmail}>{email}</Text>
                     </View>
 
                     <View>
