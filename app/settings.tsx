@@ -17,6 +17,7 @@ import { MaterialIcons, Octicons } from "@expo/vector-icons";
 import { supabase } from "@/lib/supabase";
 import Colors from "@/constants/Colors";
 import { useAuth } from "@/contexts/AuthContext";
+import { scaleWidth, scaleHeight, scaleFont } from "@/constants/metrics";
 
 const Settings = () => {
 
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerText: {
-        fontSize: 18,
+        fontSize: scaleFont(18),
         fontWeight: 'bold',
         color: Colors.black,
         marginRight: 0
@@ -114,28 +115,31 @@ const styles = StyleSheet.create({
     userName:{
         color: Colors.black, 
         fontWeight:'bold', 
-        fontSize:22, 
+        fontSize: scaleFont(22), 
         fontFamily:'Manrope', 
         marginBottom:6, 
-        marginTop:7
+        marginTop:7,
+        textAlign:'center',
     },
     userEmail:{
         color: Colors.grey, 
         fontWeight:'regular', 
-        fontSize:16, 
+        fontSize: scaleFont(16), 
         fontFamily:'Manrope', 
-        marginBottom:20
+        marginBottom:20,
+        textAlign:'center',
     },
     settingsTittle:{
         color: Colors.black, 
         fontWeight:'bold', 
-        fontSize:18, 
+        fontSize: scaleFont(18), 
         marginBottom:16
     },
     settingsOption:{
         color: Colors.black, 
         fontWeight:'regular',
-        fontSize:16,marginBottom:16
+        fontSize: scaleFont(16),
+        marginBottom:16
     },
     logoutButton: { 
         borderRadius: 8, 
@@ -144,13 +148,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'absolute',
         bottom: 80,
-        width: 358,
-        height: 48,
+        width: scaleWidth(358),
+        height: scaleHeight(48),
         alignSelf: 'center'
     },
     logoutButtonText:{
         color: Colors.black, 
-        fontSize:14,
+        fontSize: scaleFont(14),
         fontWeight:'bold', 
     },
 
