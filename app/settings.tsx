@@ -20,22 +20,6 @@ import { useAuth } from "@/contexts/AuthContext";
 
 const Settings = () => {
 
-    const [name, setName] = useState <string | null>(null);
-
-   useEffect(() => {
-        const fetchUser = async () => {
-            const { data: { user }, error } = await supabase.auth.getUser();
-            
-                if (user) {
-                setName(user.user_metadata.name);
-                }
-        }
-
-        fetchUser();
-    }, []);
-
-
-
     const {setAuth, user} = useAuth();
     async function handleSingOut() {
         const {error} = await supabase.auth.signOut()
@@ -65,7 +49,7 @@ const Settings = () => {
                     <View style={styles.profileInfos}>
                         <Image source={require('../assets/images/profileExample.png')}/>
 
-                        <Text style={styles.userName}>{name}</Text>
+                        <Text style={styles.userName}>{user?.user_metadata.name}</Text>
 
                         <Text style={styles.userEmail}>{user?.email}</Text>
                     </View>
