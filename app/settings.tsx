@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { router } from "expo-router";
 import {
     View, 
@@ -21,7 +21,6 @@ import { useAuth } from "@/contexts/AuthContext";
 const Settings = () => {
 
     const [name, setName] = useState <string | null>(null);
-    const [email, setEmail] = useState <string | undefined> (undefined);
 
    useEffect(() => {
         const fetchUser = async () => {
@@ -29,7 +28,6 @@ const Settings = () => {
             
                 if (user) {
                 setName(user.user_metadata.name);
-                setEmail(user.email);
                 }
         }
 
@@ -38,7 +36,7 @@ const Settings = () => {
 
 
 
-    const {setAuth} = useAuth();
+    const {setAuth, user} = useAuth();
     async function handleSingOut() {
         const {error} = await supabase.auth.signOut()
         setAuth(null);
@@ -69,7 +67,7 @@ const Settings = () => {
 
                         <Text style={styles.userName}>{name}</Text>
 
-                        <Text style={styles.userEmail}>{email}</Text>
+                        <Text style={styles.userEmail}>{user?.email}</Text>
                     </View>
 
                     <View>
