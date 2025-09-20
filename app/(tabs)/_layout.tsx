@@ -19,7 +19,7 @@ export default function TabLayout() {
       elevation: 0,
       borderColor:   Colors.lightGrey,  
       backgroundColor: Colors.white,
-      height: 80,
+      height: 110,
       justifyContent: 'space-evenly'
     },
     
