@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Colors from "@/constants/Colors";
 
+import { scaleWidth, scaleHeight, scaleFont } from "@/constants/metrics";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -19,32 +20,32 @@ return (
   <SafeAreaView style={styles.safeArea} edges={['top']}>
     <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
     
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/images/firstScreen.png')}
-        style={{
-          width: screenWidth,
-          height: screenHeight * 0.4, 
-        }}
-        resizeMode="cover"
-      />
+      <View style={styles.container}>
+        <Image
+          source={require('../assets/images/firstScreen.png')}
+          style={{
+            width: screenWidth,
+            height: screenHeight * 0.4, 
+          }}
+          resizeMode="cover"
+        />
 
-      <View style={styles.containerMain}>
-        <Text style={styles.textMain}>Bem-vindo à sua jornada financeira</Text>
+      <View style={{flex:1,}}>
+        <View style={styles.containerMain}>
+          <Text style={styles.textMain}>Bem-vindo à sua jornada financeira</Text>
+        </View>
+
+        <View>
+          <Text style={styles.textSecondary}>
+            Assuma o controle de suas finanças e alcance seus objetivos com facilidade.
+          </Text>
+        </View>
+
+        <TouchableOpacity style={styles.startButton} onPress={() => router.push('/(auth)/(singin)/login')}>
+          <Text style={{color: Colors.white, fontSize:scaleFont(16)}}>Comece</Text>
+        </TouchableOpacity>
       </View>
-
-      <View>
-        <Text style={styles.textSecondary}>
-          Assuma o controle de suas finanças e alcance seus objetivos com facilidade.
-        </Text>
-      </View>
-
-      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/(auth)/(singin)/login')}>
-        <Text style={{color: Colors.white}}>Comece</Text>
-      </TouchableOpacity>
-    
-
-
+      
     </View>
   </SafeAreaView>
 );
@@ -65,14 +66,14 @@ const styles = StyleSheet.create({
         marginTop:16
     },
     textMain: {
-        fontSize: 28,
+        fontSize: scaleFont(28),
         fontWeight: 'bold',
         color: Colors.black,
         textAlign:'center',
 
     },
     textSecondary:{
-      fontSize: 16,
+      fontSize: scaleFont(16),
       fontWeight: 'regular',
       color: Colors.black,
       textAlign:'center',
@@ -85,8 +86,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         position: 'absolute',
         bottom: 80,
-        width: 358,
-        height: 48,
+        width: scaleWidth(358),
+        height: scaleHeight(48),
         alignSelf: 'center'
     },
 
