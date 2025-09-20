@@ -1,26 +1,22 @@
+import { useEffect, useState } from "react";
+import { router } from "expo-router";
 import {
     View, 
     Text, 
     TouchableOpacity, 
     StyleSheet, 
     Image,
-    StatusBar
+    StatusBar,
+    Alert
 } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
-// import styles from "./billStyle";
-// import Octicons from "react-native-vector-icons/Octicons"
-
 import { MaterialIcons, Octicons } from "@expo/vector-icons";
 
-import BillsComponents from "@/components/BillsComponents";
-import { router } from "expo-router";
-import Colors from "@/constants/Colors";
-import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import Colors from "@/constants/Colors";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Settings = () => {
 
@@ -28,18 +24,30 @@ const Settings = () => {
     const [email, setEmail] = useState <string | undefined> (undefined);
 
    useEffect(() => {
-    const fetchUser = async () => {
-        const { data: { user }, error } = await supabase.auth.getUser();
-        
-            if (user) {
-            setName(user.user_metadata.name);
-            setEmail(user.email);
-            }
+        const fetchUser = async () => {
+            const { data: { user }, error } = await supabase.auth.getUser();
+            
+                if (user) {
+                setName(user.user_metadata.name);
+                setEmail(user.email);
+                }
+        }
+
+        fetchUser();
+    }, []);
+
+
+
+    const {setAuth} = useAuth();
+    async function handleSingOut() {
+        const {error} = await supabase.auth.signOut()
+        setAuth(null);
+
+        if(error){
+            Alert.alert('Erro', "Erro ao sair, tente novamente mais tarde.")
+            return;
+        }
     }
-
-    fetchUser();
-}, []);
-
 
     return(
          <SafeAreaView style={styles.safeArea } edges={['top']}>
@@ -79,7 +87,7 @@ const Settings = () => {
                         <Text style={styles.settingsOption}>Ajuda & Suporte</Text>
                     </View>
 
-                    <TouchableOpacity style={styles.logoutButton} onPress={()=> router.replace('/')}>
+                    <TouchableOpacity style={styles.logoutButton} onPress={handleSingOut}>
                         <Text style={styles.logoutButtonText}>
                             Sair
                         </Text>
