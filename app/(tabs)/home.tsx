@@ -17,18 +17,21 @@ import { MaterialIcons } from "@expo/vector-icons/";
 
 import { useRouter } from "expo-router";
 import Colors from "@/constants/Colors";
+import { useAuth } from "@/contexts/AuthContext";
 
 
 const Dashboard = () => {
     const insets = useSafeAreaInsets();
     const router = useRouter();
 
+    const {user} = useAuth();
+
     return (
         <SafeAreaView style={styles.safeArea } edges={['top']}>
             <StatusBar barStyle={'dark-content'} backgroundColor={Colors.white} /> 
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.headerText}>Bem Vindo</Text>
+                    <Text style={styles.headerText}>Bem Vindo, {user?.user_metadata.name.split(" ")[0]}!</Text>
                     <TouchableOpacity style={{position:'absolute', right:16}}><MaterialIcons name="settings" size={24} onPress={()=> router.push('/settings')}/></TouchableOpacity>
                 </View>
 
