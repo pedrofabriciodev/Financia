@@ -15,8 +15,15 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { router } from "expo-router";
 import Colors from "@/constants/Colors";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/contexts/AuthContext";
 
 const AddBill = () =>{
+
+    const {user} = useAuth();
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [invoiceValue, setInvoiceValue] = useState('');
     
     const [isEnabled, setIsEnabled] = useState(false);
   
@@ -25,27 +32,54 @@ const AddBill = () =>{
     //Mascara da Data
     const [date, setDate] = useState('');
 
-    const formatDate = (text: string) => {
-        // Remove tudo que não é número
-        let cleaned = text.replace(/\D/g, '');
-        
-        // Aplica a máscara: DD/MM/AAAA
-        if (cleaned.length <= 2) {
-        return cleaned;
-        } else if (cleaned.length <= 4) {
-        return `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
-        } else {
-        return `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}/${cleaned.slice(4, 8)}`;
-        }
+    const formatDateForDisplay = (text: string) => {
+        const cleaned = text.replace(/\D/g, '').slice(0, 8); // só números
+        if (cleaned.length <= 2) return cleaned;
+        if (cleaned.length <= 4) return `${cleaned.slice(0,2)}/${cleaned.slice(2)}`;
+        return `${cleaned.slice(0,2)}/${cleaned.slice(2,4)}/${cleaned.slice(4,8)}`;
     };
 
     const handleDateChange = (text: string) => {
-        const formattedDate = formatDate(text);
-        setDate(formattedDate);
+        const cleaned = text.replace(/\D/g, '').slice(0, 8);
+        setDate(cleaned); // aqui guardamos apenas dígitos (ex: "12012025")
     };
 
+    // Converter para ISO (YYYY-MM-DD) na hora de salvar
+    const getDateForDb = () => {
+        if (date.length !== 8) return null;
+        const day = date.slice(0, 2);
+        const month = date.slice(2, 4);
+        const year = date.slice(4, 8);
+        return `${year}-${month}-${day}`;
+    };
+
+    const dbDate = getDateForDb();
 
 
+
+    async function handleRegisterBills(){
+        const { error: insertError } = await supabase
+            .from("bills")
+            .insert([
+                {
+                    name: name,
+                    due_date: dbDate,
+                    // description: description,
+                    invoice_value: invoiceValue,
+                    user_id: user?.id,   // pega o id do usuário logado
+                    paid: isEnabled,
+                }
+            ]);
+
+        if (insertError) {
+            console.error("Erro ao cadastrar conta:", insertError.message);
+            return;
+        }
+
+        
+
+        router.replace('/(tabs)/home')
+    }
 
     return(
     <SafeAreaView style={styles.safeArea}>
@@ -62,19 +96,23 @@ const AddBill = () =>{
                     style={styles.input}
                     placeholder="Nome da Conta"
                     keyboardType="default"
+                    value={name}
+                    onChangeText={setName}
                     />
 
                     <TextInput 
                     style={styles.input}
                     placeholder="Valor"
                     keyboardType= "numeric"
+                    value={invoiceValue}
+                    onChangeText={setInvoiceValue}
                     />
 
                      <TextInput
                         style={styles.input}
                         placeholder="DD/MM/AAAA"
                         keyboardType="numeric"
-                        value={date}
+                        value={formatDateForDisplay(date)}
                         onChangeText={handleDateChange}
                         maxLength={10} // DD/MM/AAAA = 10 caracteres
                     />
@@ -93,7 +131,7 @@ const AddBill = () =>{
                     />
                 </View>
 
-                <TouchableOpacity style={styles.saveButton} >
+                <TouchableOpacity style={styles.saveButton} onPress={handleRegisterBills}>
                     <Text style={styles.saveButtonText}>Salvar</Text>
                 </TouchableOpacity>
 
