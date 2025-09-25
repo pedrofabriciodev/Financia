@@ -1,50 +1,119 @@
-# Welcome to your Expo app 👋
+# 💰 Financia
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo desenvolvido em **React Native** para gerenciamento e acompanhamento de contas financeiras, focado em simplicidade, praticidade e integração com autenticação segura.
 
-## Get started
+O objetivo do **Financia** é permitir que o usuário registre suas contas, acompanhe seus gastos e organize sua vida financeira de forma intuitiva, com suporte a autenticação e armazenamento em nuvem.
 
-1. Install dependencies
+---
 
+## 📱 Funcionalidades
+
+### 🔐 Autenticação de Usuários
+- Login e cadastro com autenticação segura (**Supabase Auth**).  
+- Sessão persistente para manter o usuário conectado.
+
+### 💳 Gestão de Contas (Bills)
+- Cadastro de contas vinculadas ao usuário autenticado.  
+- Validação com **Row Level Security (RLS)** no banco para garantir segurança.  
+- Listagem de contas em tempo real.  
+
+### 🎨 Interface
+- Layout responsivo, adaptado para iOS e Android.  
+- Uso de **SafeAreaView** para respeitar áreas seguras em dispositivos com notch.  
+- Ícones vetoriais com **Material Icons**.  
+- Listagem otimizada com **FlatList**.  
+
+### 🔔 Feedback ao Usuário
+- Indicadores de carregamento (**ActivityIndicator**).  
+- Mensagens de erro em caso de falha no cadastro ou login.  
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Frontend:** React Native com Expo  
+- **Navegação:** Expo Router  
+- **Estilização:**  
+  - StyleSheet do React Native  
+  - Paleta de cores centralizada (**Colors.ts**)  
+  - Métricas responsivas (**metrics.ts**)  
+- **Autenticação & Banco de Dados:** 
+  - Supabase  
+  - Supabase Auth para login/cadastro  
+  - Banco de dados PostgreSQL com políticas de segurança RLS  
+- **Outros:**  
+  - react-native-safe-area-context (ajuste seguro de layout)  
+  - @expo/vector-icons (ícones de interface)  
+
+---
+
+## ⚙️ Arquitetura
+
+O projeto segue uma estrutura modularizada, separando contexto, componentes e constantes:
+
+```
+Financia/
+│── app/            # Telas e roteamento do Expo Router
+│ ├── (auth)/       # Rotas de autenticação (login, cadastro)
+│ └── (tabs)/       # Rotas de navegação principal (home, etc.)
+│
+│── components/     # Componentes reutilizáveis (botões, cards)
+│── constants/      # Constantes globais (cores, tamanhos, configurações)
+│── contexts/       # Contextos para gerenciamento de estado (AuthContext)
+│── hooks/          # Hooks customizados para lógica reutilizável
+│── lib/            # Configurações de serviços de terceiros (Supabase)
+└── assets/         # Arquivos estáticos (fontes, imagens)
+```
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+- Git para clonar o projeto  
+- Node.js instaladone cessário para rodar o projeto  
+- Expo CLI configurado (`npm install -g expo-cli`)  
+- Expo Go App para emular a aplicação no telefone
+
+### Passos
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/pedrofabriciodev/Financia.git
+   cd Financia
+   ```
+
+2. Instale as dependências:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Execute o app:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. Escaneie o QR Code no aplicativo **Expo Go** (disponível para iOS e Android).  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🔒 Segurança
 
-## Get a fresh project
+- Implementação de **Row Level Security (RLS)** no Supabase, garantindo que cada usuário só consiga acessar suas próprias contas.  
+- Regras de autenticação aplicadas diretamente no banco.  
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 📌 Futuras Melhorias
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- 📊 Dashboard com gráficos de despesas.  
+- 🗂️ Categorias de contas e gastos.  
+- 📑 Exportação de relatórios em PDF/Excel.  
+- 🔔 Notificações para contas a vencer.  
+- 📶 Suporte offline com sincronização posterior.  
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 👨‍💻 Autor
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Desenvolvido por **Pedro Fabrício** 🚀
